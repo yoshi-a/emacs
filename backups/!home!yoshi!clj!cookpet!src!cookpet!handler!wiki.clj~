@@ -1,0 +1,84 @@
+(ns cookpet.handler.wiki
+  (:require [compojure.core :refer [defroutes context GET POST]]
+            [cookpet.util.response :as res]
+            [cookpet.page.wiki :as page]
+            [cookpet.db.wiki :as wiki]
+            [bouncer.validators :as v]
+            [cookpet.util.validation :as uv]
+            [ring.middleware.keyword-params :as keyword-params] 
+            [ring.middleware.params :as params]))
+
+(def wiki-validator {:question  [[v/required :message "入力してください"]]})
+(def name-validator {:keyword  [[v/required :message "入力してください"]]})
+
+(defn render-wiki [req]
+  (let [wiki-list (wiki/find-wiki-all)]
+    (-> (page/wiki req wiki-list)
+        res/ok
+        res/html)))
+(defn wiki-new [req]
+  (-> (page/wiki-new-page req)
+      res/ok
+      res/html))
+(defn wiki-new-post [{:as req :keys [params]}]
+  (uv/with-fallback #(wiki-new (assoc req :errors %))
+    (let [params (uv/validate params wiki-validator)]
+      (if-let [wiki (first (wiki/save-wiki (:name params) (:question params) (:answer params) (:explain params)))]
+        (-> (res/found (str "/wiki/" (:wiki-id wiki)))
+            (assoc :flash {:msg "完了"})
+            res/html)
+        (res/internal-server-error!)))))
+(defn edit-wiki [{:as req :keys [params]}]
+  (if-let [wiki (wiki/find-first-wiki (Long/parseLong (:wiki-id params)))]
+    (-> (page/wiki-edit-view req wiki)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defn edit-wiki-post [{:as req :keys [params]}]
+  (uv/with-fallback #(edit-wiki (assoc req :errors %))
+    (let [params (uv/validate params wiki-validator)
+          wiki-id (Long/parseLong (:wiki-id params))]
+      (if (pos? (first (wiki/update-wiki wiki-id (:question params) (:answer params) (:explain params))))
+        (-> (res/found (str "/wiki/" wiki-id))
+            (assoc :flash {:msg "完了"})
+            res/html)
+        (res/internal-server-error!)))))
+(defn delete-wiki [{:as req :keys [params]}]
+  (if-let [wiki (wiki/find-first-wiki (Long/parseLong (:wiki-id params)))]
+    (-> (page/wiki-delete-view req wiki)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defn delete-wiki-post [{:as req :keys [params]}]
+  (let [wiki-id (Long/parseLong (:wiki-id params))]
+    (if (pos? (first (wiki/delete-wiki wiki-id)))
+      (-> (res/found "/wiki")
+          (assoc :flash {:msg "完了"})
+          res/html)
+      (res/conflict!))))
+(defn wiki-search [{:as req :keys [params]}]
+  (uv/with-fallback #(render-wiki (assoc req :errors %))
+   (let [params (uv/validate params name-validator)]
+      (if-let [wiki (wiki/find-wiki-name (:keyword params))]
+        (-> (page/wiki req wiki)
+            res/ok
+            res/html)
+        (res/not-found!)))))
+(defn show-wiki [{:as req :keys [params]}]
+  (if-let [wiki (wiki/find-first-wiki (Long/parseLong (:wiki-id params)))]
+    (-> (page/wiki-show-view req wiki)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defroutes wiki-routes
+  (context "/wiki" _
+           (GET "/" _ render-wiki)
+           (GET "/new" _ wiki-new)
+           (POST "/new" _ wiki-new-post)
+           (POST "/search" _ wiki-search)
+           (context "/:wiki-id" _
+                    (GET "/" _ show-wiki)
+                    (GET "/edit" _ edit-wiki)
+                    (POST "/edit" _ edit-wiki-post)
+                    (GET "/delete" _ delete-wiki)
+                    (POST "/delete" _ delete-wiki-post))))

@@ -1,0 +1,12 @@
+(ns cookpet.page.login
+  (:require [cookpet.page.layout :as layout]))
+(def login-form
+  (layout/common
+    (hf/form-to [:post "/login"]
+                  [:div
+                   [:div
+                    (hf/label "username" "user name:")
+                    (hf/text-field "username")]
+                   [:div (hf/label "password" "password:")
+                    (hf/password-field "password")]
+                   [:div (hf/submit-button "login!")]])))

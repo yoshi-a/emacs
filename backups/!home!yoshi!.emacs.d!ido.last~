@@ -1,0 +1,175 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/yoshi/clj/droid/src/" . "droid/")
+ ("/home/yoshi/clj/droid/" . "src/")
+ ("/home/yoshi/clj/bokiwiki/src/" . "cookpet/")
+ ("/home/yoshi/clj/pdxbike/src/" . "pdxbike/")
+ ("/home/" . "yoshi/")
+ ("/" . "home/")
+ ("/home/yoshi/clj/cljs/src/cljs/" . "client/")
+ ("/home/yoshi/clj/practice/src/" . "practice/")
+ ("/home/yoshi/clj/practice/" . "src/")
+ ("/home/yoshi/clj/" . "droid/")
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/atul/" . "JavaOpenCV/")
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/" . "atul/")
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/" . "com/")
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/" . "src/")
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/" . "ImShow_JCV/")
+ ("/home/yoshi/opencv-3.1.0/" . "ImShow-Java-OpenCV/")
+ ("/home/yoshi/opt/" . "clj-opencv/")
+ ("/home/yoshi/" . ".lein/")
+ ("/home/yoshi/clj/opencv/src/" . "opencv/")
+ ("/home/yoshi/clj/opencv/" . "src/")
+ ("/home/yoshi/clj/bokiwiki/resources/public/" . "css/")
+ ("/home/yoshi/clj/bokiwiki/resources/" . "public/")
+ ("/home/yoshi/clj/bokiwiki/" . "src/")
+ ("/var/www/html/wp-content/plugins/" . "custom-login-url/")
+ ("/var/www/html/wp-content/" . "plugins/")
+ ("/var/www/html/" . "wp-content/")
+ ("/home/yoshi/clj/bokiwiki/src/cookpet/" . "page/")
+ ("/home/yoshi/wordpress/wp-content/themes/theme_cookpet/" . "js/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/yoshi/clj/droid/"
+ "/home/yoshi/clj/droid/src/droid/"
+ "/home/yoshi/clj/bokiwiki/src/cookpet/page/"
+ "/home/yoshi/clj/bokiwiki/src/cookpet/"
+ "/home/yoshi/clj/pdxbike/src/pdxbike/"
+ "/home/yoshi/.lein/"
+ "/home/yoshi/clj/bokiwiki/"
+ "/home/yoshi/clj/cljs/"
+ "/home/yoshi/clj/cljs/src/cljs/client/"
+ "/home/yoshi/clj/opencv-test/"
+ "/home/yoshi/clj/practice/src/practice/"
+ "/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/atul/JavaOpenCV/"
+ "/home/yoshi/clj/opencv/src/opencv/"
+ "/home/yoshi/clj/bokiwiki/resources/public/css/"
+ "/var/www/html/"
+ "/var/www/html/wp-content/plugins/custom-login-url/"
+ "/home/yoshi/wordpress/wp-content/themes/theme_cookpet/"
+ "/home/yoshi/wordpress/wp-content/themes/theme_cookpet/js/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "project.clj"
+ "core.clj"
+ "main.clj"
+ "core.cljs"
+ "profiles.clj"
+ "main.cljs"
+ "Imshow.java"
+ "style.css"
+ "question.clj"
+ ".htaccess"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/yoshi/clj/opencv-test/src/opencv_test/" (22396 42607 177053 247000) "../" "./" "core.clj")
+
+ ("/home/yoshi/clj/droid/src/droid/" (22324 7302 354200 901000) "../" "./" "core.clj")
+
+ ("/home/yoshi/clj/droid/src/" (22324 7302 354200 901000) "droid/" "../" "./")
+
+ ("/home/yoshi/clj/droid/" (22324 7302 358200 567000) ".hgignore" "project.clj" "src/" "README.md" ".gitignore" "../" "resources/" "./" "LICENSE" "CHANGELOG.md" "test/" "doc/")
+
+ ("/home/yoshi/clj/" (22324 7302 330202 903000) "pdxbike/" "droid/" "practice/" "../" "bokiwiki/" "./" "cookpet/" "opencv-test/")
+
+ ("/home/yoshi/clj/bokiwiki/" (22324 76 394072 0) ".hgignore" ".lein-failures" "project.clj" "project.clj~" "Procfile" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "./" "LICENSE" "CHANGELOG.md" ".lein-env" ".lein-repl-history" ".nrepl-port" ".git/" "test/" "doc/")
+
+ ("/home/yoshi/clj/bokiwiki/src/cookpet/page/" (22324 397 590590 0) "main.clj~" "login.clj" "wiki.clj~" "../" "./" "main.clj" "layout.clj" "question.clj" "layout.clj~")
+
+ ("/home/yoshi/clj/pdxbike/" (22304 33572 403119 80000) "figwheel_server.log" "project.clj" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "./")
+
+ ("/home/yoshi/clj/pdxbike/src/pdxbike/" (22323 65310 479193 963000) "core.cljs" ".#core.cljs" "../" "./")
+
+ ("/home/yoshi/clj/pdxbike/src/" (22304 33472 707119 80000) "pdxbike/" "../" "./")
+
+ ("/home/yoshi/.lein/" (22304 23374 451119 80000) "self-installs/" "../" "./" "profiles.clj" "profiles.clj~" "repl-history")
+
+ ("/home/" (22109 21829 244825 968000) "yoshi/" "../" "./")
+
+ ("/home/yoshi/" (22304 16608 996991 1000) "deja-dup/" ".sudo_as_admin_successful" ".vboxclient-seamless.pid" ".xsession-errors" "ドキュメント/" "xrandr.sh" ".Xauthority" ".bash_logout" "デスクトップ/" "公開/" "Fiji.app/" ".ghc/" ".mozilla/" ".ssh/" "xrandr.sh~" ".gnome2_private/" "hadoop.txt" ".mozc/" ".lein/" ".imagej/" ".vboxclient-draganddrop.pid" ".dbus/" "regression/" ".bash_history" "ビデオ/" ".gvfs/" "ghc-mod-5.5.0.0/" ".psql_history" "../" ".bashrc" ".gitconfig" ".java/" ".bashrc~" ".ICEauthority" ".emacs.d/" ".cache/" ".presage/" "ダウンロード/" ".dmrc" ".vboxclient-display.pid" ".nano/" ".profile" ".gnome2/" "./" ".netrc" ".gnupg/" ".m2/" ".vboxclient-clipboard.pid" "ピクチャ/" "じっくり読む狩猟法.rkt~" ".xsession-errors.old" ".gconf/" ".mysql_history" "missfont.log" "hello-world/" ".pip/" "clj/" ".config/" ".stack/" ".heroku/" ".local/" "examples.desktop" ".oracle_jre_usage/" "テンプレート/" "recognition/" "ミュージック/")
+
+ ("/home/yoshi/clj/cljs/" (22304 18505 951104 327000) "project.clj" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "./" "externs/")
+
+ ("/home/yoshi/clj/cljs/src/" (22304 16768 944925 0) "cljs/" "../" "./")
+
+ ("/home/yoshi/clj/cljs/src/cljs/client/" (22304 19159 963119 80000) "../" "main.cljs" "./")
+
+ ("/home/yoshi/clj/cljs/src/cljs/" (22304 16768 956931 0) "client/" "models/" "../" "./" "server.clj" "views/")
+
+ ("/home/yoshi/clj/practice/src/practice/" (22238 62463 902490 688000) "../" "./" "core.clj" "core.clj~")
+
+ ("/home/yoshi/clj/practice/src/" (22197 29978 517425 459000) "data_readers.clj" "practice/" "../" "./" "data_readers.clj~")
+
+ ("/home/yoshi/clj/practice/" (22238 62559 27077 983000) ".hgignore" ".lein-failures" "project.clj" "project.clj~" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "./" "LICENSE" "CHANGELOG.md" ".lein-env" ".lein-repl-history" "test/" "doc/")
+
+ ("/home/yoshi/clj/opencv-test/" (22301 38863 992895 340000) ".hgignore" "project.clj" "img/" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "lib/" "./" "LICENSE" "CHANGELOG.md" ".lein-repl-history" ".nrepl-port" "test/" "doc/")
+
+ ("/home/yoshi/clj/opencv-test/src/" (22287 15290 638036 893000) "opencv_test/" "../" "./")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/atul/JavaOpenCV/" (22287 17334 620829 778000) "Imshow.java" "../" "./")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/atul/" (22287 17334 616829 826000) "../" "./" "JavaOpenCV/")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/com/" (22287 17334 616829 826000) "atul/" "../" "./")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/src/" (22287 17334 620829 778000) "com/" "../" "./" "examples/")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/ImShow_JCV/" (22287 17334 616829 826000) "src/" "../" "./" ".project" ".settings/" "bin/" ".classpath")
+
+ ("/home/yoshi/opencv-3.1.0/ImShow-Java-OpenCV/" (22287 17334 620829 778000) "Imshow.jar" "README.md" "ImShow_JCV/" ".gitignore" "../" "./" "LICENSE" ".git/")
+
+ ("/home/yoshi/opencv-3.1.0/bin/" (22287 12401 900191 537000) "opencv_test_imgcodecs" "opencv_test_stitching" "opencv_perf_video" "opencv_test_core" "opencv_perf_stitching" "opencv_test_videoio" "opencv_test_ml" "opencv_test_imgproc" "opencv_perf_objdetect" "opencv_perf_features2d" "opencv_test_video" "opencv_test_flann" "opencv_perf_calib3d" "opencv_perf_imgproc" "opencv_perf_core" "opencv_test_objdetect" "../" "opencv_annotation" "opencv_traincascade" "opencv_perf_videoio" "opencv_test_calib3d" "opencv_perf_photo" "./" "opencv_test_features2d" "opencv_test_superres" "opencv-310.jar.dephelper" "opencv_createsamples" "opencv_test_highgui" "opencv-310.jar" "opencv_perf_imgcodecs" "opencv_perf_superres" "opencv_test_photo" "opencv_test_shape")
+
+ ("/home/yoshi/opencv-3.1.0/" (22287 17329 116896 83000) "cvconfig.h" "test-reports/" "platforms/" "cmake_install.cmake" "custom_hal.hpp" "CPackConfig.cmake" "CMakeFiles/" "3rdparty/" "CPackSourceConfig.cmake" "src/" "README.md" "version_string.tmp" "build.xml" "data/" "cmake/" "OpenCVConfig-version.cmake" "apps/" "../" "CTestTestfile.cmake" "CMakeLists.txt" "lib/" "include/" "unix-install/" "./" "LICENSE" ".tgitconfig" "modules/" "CONTRIBUTING.md" "opencv2/" "samples/" "bin/" "OpenCVModules.cmake" "cmake_uninstall.cmake" "ImShow-Java-OpenCV/" "CMakeCache.txt" "install_manifest.txt" "junk/" "doc/" "Makefile" "OpenCVConfig.cmake")
+
+ ("/home/yoshi/opt/clj-opencv/" (22286 64456 20170 794000) "../" "./")
+
+ ("/home/yoshi/opt/" (22286 64456 20170 794000) "opencv/" "../" "./" "clj-opencv/")
+
+ ("/home/yoshi/clj/opencv/src/opencv/" (22286 1729 376667 119000) "../" "./" "core.clj")
+
+ ("/home/yoshi/clj/opencv/src/" (22286 1729 376667 119000) "opencv/" "../" "./")
+
+ ("/home/yoshi/clj/opencv/" (22286 4714 551985 946000) ".hgignore" "project.clj" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "lib/" "./" "LICENSE" "CHANGELOG.md" "test/" "doc/")
+
+ ("/home/yoshi/clj/bokiwiki/resources/public/css/" (22233 15873 232292 565000) "showanswer.js" "papier/" "../" "style.css" "main.js" "./" "papier-1.3.1.min.css" "normalize/" "normalize.css")
+
+ ("/home/yoshi/clj/bokiwiki/resources/public/" (22206 56203 5040 148000) "css/" "../" "./")
+
+ ("/home/yoshi/clj/bokiwiki/resources/" (22206 56187 749033 732000) "../" "public/" "./")
+
+ ("/home/yoshi/clj/bokiwiki/doc/" (22205 62348 559372 669000) "intro.md" "../" "./")
+
+ ("/home/yoshi/clj/bokiwiki/target/" (22284 45845 87417 999000) "cookpet-0.1.0-SNAPSHOT.jar" "bokiwiki.jar" "repl-port" "classes/" "../" "./" "stale/")
+
+ ("/home/yoshi/clj/bokiwiki/src/" (22205 62348 559372 669000) "../" "./" "cookpet/")
+
+ ("/home/yoshi/clj/bokiwiki/src/cookpet/handler/" (22233 3015 594025 315000) "main.clj~" "login.clj" "wiki.clj~" "../" "./" "main.clj" "question.clj")
+
+ ("/var/www/html/wp-content/plugins/custom-login-url/" (22260 38654 994595 324000) "index.php" "custom-login-url.php" "../" "functions.php" "./" "functions-admin.php" "assets/" "readme.txt")
+
+ ("/var/www/html/wp-content/plugins/" (22260 38654 842597 535000) "akismet/" "index.php" "wp-multibyte-patch/" "custom-login-url/" "../" "./" "hello.php")
+
+ ("/var/www/html/wp-content/" (22192 58206 0 0) "index.php" "uploads/" "upload/" "../" "themes/" "./" "upgrade/" "plugins/")
+
+ ("/var/www/html/" (22260 37789 322172 124000) "wp-mail.php" "index.php" "wp-cron.php" "wp-activate.php" "wp-trackback.php" "wp-signup.php" "readme.html" "wp-load.php" "wp-settings.php" "wp-includes/" "../" "wp-content/" ".htaccess" "wp-config-sample.php" "./" "wp-links-opml.php" "wp-login.php" "wp-config.php" "license.txt" "wp-blog-header.php" "wp-admin/" "xmlrpc.php" "wp-comments-post.php")
+
+ ("/var/www/html/wp-includes/" (22192 58208 0 0) "post-formats.php" "random_compat/" "class-wp-term.php" "date.php" "customize/" "certificates/" "ms-default-filters.php" "class-wp-tax-query.php" "class-wp-customize-widgets.php" "shortcodes.php" "kses.php" "class-http.php" "class-wp-meta-query.php" "deprecated.php" "compat.php" "template.php" "admin-bar.php" "class.wp-scripts.php" "comment-template.php" "ms-functions.php" "class-walker-category-dropdown.php" "feed-atom-comments.php" "meta.php" "theme.php" "media-template.php" "registration.php" "author-template.php" "class-walker-comment.php" "embed-template.php" "ms-files.php" "query.php" "class-wp-xmlrpc-server.php" "class-wp-customize-setting.php" "class-wp.php" "class-phpmailer.php" "http.php" "rss.php" "post.php" "ms-deprecated.php" "css/" "post-template.php" "general-template.php" "class-wp-oembed-controller.php" "class-wp-post.php" "class-wp-editor.php" "registration-functions.php" "class-IXR.php" "class-walker-category.php" "class-wp-customize-panel.php" "cron.php" "embed.php" "ms-default-constants.php" "class-wp-theme.php" "pomo/" "nav-menu.php" "update.php" "default-widgets.php" "category-template.php" "feed.php" "class-wp-walker.php" "post-thumbnail-template.php" "class-wp-user.php" "pluggable-deprecated.php" "class-wp-http-cookie.php" "fonts/" "l10n.php" "widgets.php" "class-wp-roles.php" "class-wp-network.php" "functions.php" "rest-api.php" "rss-functions.php" "capabilities.php" "class-wp-customize-manager.php" "wp-diff.php" "class-oembed.php" "comment.php" "functions.wp-scripts.php" "class-wp-customize-control.php" "feed-rss.php" "class-wp-image-editor-imagick.php" "option.php" "widgets/" "class-wp-error.php" "feed-atom.php" "images/" "media.php" "class-wp-comment-query.php" "ms-load.php" "plugin.php" "SimplePie/" "taxonomy.php" "class-smtp.php" "class-wp-http-encoding.php" "class-walker-page.php" "class-wp-embed.php" "wlwmanifest.xml" "formatting.php" "class-wp-rewrite.php" "feed-rdf.php" "class-wp-admin-bar.php" "rewrite.php" "class-wp-http-ixr-client.php" "class-wp-customize-section.php" "rest-api/" "template-loader.php" "class-wp-ajax-response.php" "class-feed.php" "feed-rss2.php" "pluggable.php" "class-snoopy.php" "class-pop3.php" "class.wp-dependencies.php" "wp-db.php" "load.php" "atomlib.php" "class-simplepie.php" "class-wp-user-query.php" "vars.php" "user.php" "class.wp-styles.php" "class-wp-http-streams.php" "class-wp-http-response.php" "theme-compat/" "link-template.php" "nav-menu-template.php" "feed-rss2-comments.php" "class-wp-image-editor.php" "js/" "functions.wp-styles.php" "version.php" "canonical.php" "class-wp-http-curl.php" "class-walker-page-dropdown.php" "session.php" "Text/" "ms-settings.php" "class-phpass.php" "class-wp-image-editor-gd.php" "class-wp-customize-nav-menus.php" "ms-blogs.php" "class-wp-comment.php" "class-json.php" "bookmark-template.php" "category.php" "class-wp-widget.php" "locale.php" "bookmark.php" "class-wp-http-proxy.php" "class-wp-widget-factory.php" "ID3/" "default-constants.php" "revision.php" "class-wp-role.php" "default-filters.php" "cache.php" "script-loader.php" "../" "./")
+
+ ("/home/yoshi/clj/bokiwiki/src/cookpet/" (22233 10193 36390 666000) "handler/" "middleware/" "db/" "page/" "../" "db.clj" "./" "util/" "db.clj~" "core.clj" "main.clj" "#core.clj#" "core.clj~" "user.clj" "middleware.clj")
+
+ ("/home/yoshi/wordpress/wp-content/themes/theme_cookpet/" (22255 54682 579868 65000) ".#delete.php" "taxonomy-recipe_type-petta.php" "index.php" "sidebar.php" "favicons/" "home.php" "loop-recipe.php" "search-recipe.php" "taxonomy-recipe_type-kutta.php" "README.txt" "admin_login.css" "doctor_reset_css.css" "taxonomy-recipe_type.php" "fonts/" "../" "functions.php" "header.php" "logo250x50.svg" "style.css" "images/" "archive-recipe.php" "./" "create-recipe.php" "taxonomy-recipe_type-totta.php" "comments.php" "js/" ".git/" "footer.php" "logo250x50.png" "logo.svg" "screenshot.png" "single-recipe.php")
+
+ ("/home/yoshi/wordpress/wp-content/themes/theme_cookpet/js/" (22250 30090 980960 901000) "cookpet_common.js" "jquery.japan-map.min.js" "../" "jquery.ah-placeholder.js" "./" "imagesloaded.pkgd.min.js" "masonry.pkgd.min.js" "map.js" "jquery-1.11.3.min.js")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

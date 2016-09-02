@@ -1,0 +1,78 @@
+<?php get_header(); ?>
+	<div id="main-container">
+		<div id="bis-main-container">
+			<article>
+			<div class="totta-t"><img alt="book" src="<?php echo get_bloginfo('template_url'); ?>/images/book500x100.png"></div>
+			<?php if(is_user_logged_in()): ?>
+			<section>
+				<h2>新規投稿</h2><hr>
+				<form id="create_recipe_form" action="<?php the_permalink(); ?>" method="post" enctype="multipart/form-data">
+					<div id="title-box">
+						<p><label for="animal_name">生き物の種類</label>
+							<input id="organism" type="text" name="organism" value="" placeholder="例）サワガニ" required></p>
+						<p>
+							<input type="radio" name="recipe_type" value="totta" checked>目撃情報&nbsp;
+							<input type="radio" name="recipe_type" value="kutta">食べ方&nbsp;
+							<input type="radio" name="recipe_type" value="petta">育て方
+						</p>
+						<p class="kutta-petta" style="display: none"><label for="title">レシピ/ペットの名前</label>
+							<input id="title" type="text" name="title" value="" placeholder="例）蟹のサルカッタ">&nbsp;
+							<span class="small_gray">
+								-by&nbsp;<?php $usr=wp_get_current_user();echo htmlspecialchars($usr->get('display_name')); ?>
+							</span></p></div>
+					<div id="form-upper-box">
+						<div class="main_picture">
+							<label for="main_picture_input">写真</label><br>
+							<img style="display:block" id="main_picture_ns_img" alt="main_picture" src="<?php echo get_bloginfo('template_url'); ?>/images/not_selected.png">
+							<img style="display:none" id="main_picture_img" alt="main_picture" src="">
+							<input type="file" id="main_picture_input" name="main_picture" multiple="false" value=(post_custom('main_picture')) accept=".jpg,.png,image/jpeg,image/png" required></div>
+						<div class="abst">
+							<label for="abstract">説明</label><br>
+							<textarea id="abstract" name="abstract" value=(post_custom('abstruct')) style="width: 100%; height: 120px;" required></textarea></div>
+						<div class="ingredients kutta-petta" style="display: none">
+							<h1>材料</h1>
+							<input id="bt_append_ingredient" type="button" value="増やす">
+							<input id="bt_remove_ingredient" type="button" value="減らす">
+							<ul class="ingredients">
+								<li><input placeholder="例）蟹：1匹" id="ingr01" class="ingredients" type="test" name="ingredients[]"></li>
+								<li><input placeholder="例）蜂：1匹" class="ingredients" type="test" name="ingredients[]" ></li>
+								<li><input placeholder="例）栗：2-3個" class="ingredients" type="test" name="ingredients[]" ></li>
+								<li><input placeholder="例）ウスターソース：大さじ1" class="ingredients" type="test" name="ingredients[]" ></li>
+							</ul></div>
+					</div>
+					<div class="steps-button kutta-petta" style="display: none">
+						<p>手順</p>
+						<input id="bt_append_step" type="button" value="増やす" >
+						<input id="bt_remove_step" type="button" value="減らす" >
+						<span id="remove_alrt" style="display:none">※２行程以上記入してください</span>
+					</div>
+					<div class="kutta-petta" style="display: none" id="form-recipe-steps" >
+						<div class="step"><dl>
+								<dt>1</dt>
+								<dd>
+									<textarea id="stp01" class="steps" name="steps[]"></textarea><br>
+									<label>写真（任意）<input type="file" class="step_pictures" name="step_pictures[]" multiple="false" accept=".jpg,.png,image/jpeg,image/png" value="" ></label>
+								</dd></dl></div>
+						<div class="step"><dl>
+								<dt>2</dt>
+								<dd>
+									<textarea id="stp02" class="steps" name="steps[]"></textarea><br>
+									<label>写真（任意）<input type="file" class="step_pictures" name="step_pictures[]" multiple="false" accept=".jpg,.png,image/jpeg,image/png" value="" ></label>
+								</dd></dl></div>
+						<div class="step"><dl>
+								<dt>3</dt>
+								<dd>
+									<textarea class="steps" name="steps[]"></textarea><br>
+									<label>写真（任意）<input type="file" class="step_pictures" name="step_pictures[]" multiple="false" accept=".jpg,.png,image/jpeg,image/png" value="" ></label>
+								</dd></dl></div>
+					</div>
+					<p style="clear:both;"><label for="gecko">関連リンク（任意）</label>
+						<input id="gecko" type="text" name="gecko" value="" placeholder="例）http://cookpet.net"></p>
+					<?php wp_nonce_field('create_recipe'); ?>
+					<input id="submit_recipe" type="submit" value="投稿！">
+				</form>
+			</section>
+			<?php endif; ?>
+			</article></div></div>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

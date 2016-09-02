@@ -1,0 +1,10 @@
+(ns cookpet.db
+  (:require [clojure.java.jdbc :as jdbc]))
+
+(def db-spec
+  "postgres://rombnijqpedeto:66VrdB2FI5qvDQpU4npE7AOl7S@ec2-54-83-198-159.compute-1.amazonaws.com:5432/d75ibj3m6npdop?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory")
+
+(defn migrate []
+  (jdbc/db-do-commands
+   db-spec
+   (jdbc/create-table-ddl :question [:id :serial] [:name "varchar(10)"] [:question :text] [:answer :text][:explain :text])))

@@ -1,0 +1,12 @@
+(ns cookpet.handler.main
+  (:require [compojure.core :refer [defroutes GET]]
+            [compojure.route :as route]
+            [cookpet.util.response :as res]
+            [cookpet.page.main :as page]))
+(defn render-home [req]
+  (-> (page/home req)
+      res/ok
+      res/html))
+(defroutes main-routes
+  (GET "/" _ render-home)
+  (route/not-found res/not-found!))

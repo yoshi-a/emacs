@@ -1,0 +1,11 @@
+header.top-bar{
+    padding: 5px;
+}
+a.wide-link {
+    margin: 0 5px;
+}
+button.answer{
+    margin: 0 15px;
+    color: white;
+    background-color: green;
+}

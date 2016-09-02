@@ -1,0 +1,17 @@
+(ns opencv-test.core)
+(import [org.opencv.imgcodecs Imgcodecs]
+        [com.atul.JavaOpenCV Imshow]
+        [org.opencv.core MatOfRect]
+        [org.opencv.objdetect CascadeClassifier]
+        [org.opencv.core Mat CvType]
+        [org.opencv.imgproc Imgproc]
+        [java.awt Rectangle Color]
+        [org.opencv.videoio Videoio VideoCapture])
+(def lena (Imgcodecs/imread "img/lena.jpg"))
+(def is (Imshow. "lena"))
+(def classifier (CascadeClassifier.))
+(.load classifier "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_default.xml")
+(def buffer (Mat. 512 512 CvType/CV_8UC3))
+(Imgproc/cvtColor lena buffer Imgproc/COLOR_RGB2GRAY)
+(Imgproc/equalizeHist buffer buffer)
+(def g2 (.getGraphics (.Window is)))

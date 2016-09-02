@@ -1,0 +1,6 @@
+(ns cookpet.main
+  (:require [cookpet.core :as core])
+  (:gen-class))
+
+(defn -main [& {:as args}]
+  (core/start-server))

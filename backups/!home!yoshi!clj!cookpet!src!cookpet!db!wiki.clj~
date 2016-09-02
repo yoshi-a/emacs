@@ -1,0 +1,19 @@
+(ns cookpet.db.wiki
+  (:require [clojure.java.jdbc :as jdbc]
+            [cookpet.db :as db]))
+
+(defn save-wiki [n q a e]
+  (jdbc/insert! db/db-spec :wiki {:name n :question q :answer a :explain e}))
+
+(defn find-wiki-all []
+  (jdbc/query db/db-spec "select * from wiki"))
+(defn find-wiki-name [name]
+  (jdbc/query db/db-spec ["select * from wiki where name = ?" name]))
+(defn find-first-wiki [id]
+  (first (jdbc/query db/db-spec ["select * from wiki where id = ?" id])))
+
+(defn update-wiki [id q a e]
+  (jdbc/update! db/db-spec :wiki {:question q :answer a :explain e} ["id = ?" id]))
+
+(defn delete-wiki [id] 
+  (jdbc/delete! db/db-spec :wiki ["id = ?" id]))

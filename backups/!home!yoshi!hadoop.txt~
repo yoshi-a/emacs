@@ -1,0 +1,7 @@
+Google cloud platform
+dataproc
+クラスタの作成
+そのままクラウドに繋げば環境が構築されている
+embulk fluentd ＋ hive とか使ってもいい
+Spark試すなら Zeppelin
+これから使うならspark英語資料もある

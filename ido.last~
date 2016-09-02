@@ -1,0 +1,60 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/yoshi/clj/cookpet/resources/public/" . "css/")
+ ("/home/yoshi/clj/cookpet/resources/" . "public/")
+ ("/home/yoshi/clj/cookpet/src/" . "cookpet/")
+ ("/home/yoshi/clj/cookpet/" . "src/")
+ ("/home/yoshi/clj/" . "cookpet/")
+ ("/home/yoshi/clj/cookpet/src/cookpet/" . "page/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/yoshi/clj/cookpet/src/cookpet/"
+ "/home/yoshi/.emacs.d/"
+ "/home/yoshi/clj/cookpet/src/cookpet/page/"
+ "/home/yoshi/clj/cookpet/src/cookpet/handler/"
+ "/home/yoshi/clj/cookpet/resources/public/css/"
+ "/home/yoshi/clj/cookpet/src/cookpet/db/"
+ "/home/yoshi/clj/cookpet/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "core.clj"
+ "init.el"
+ "wiki.clj"
+ "style.css"
+ "db.clj"
+ "project.clj"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/yoshi/.emacs.d/" (22228 1791 811523 274000) "projectile-bookmarks.eld" "init.el" "ido.last" "README.md" "cider-history" "places" ".gitignore" "../" "backups/" "themes/" "./" "auto-save-list/" "customizations/" ".recentf" ".git/" ".smex-items" "elpa/" "url/")
+
+ ("/home/yoshi/clj/cookpet/" (22228 1503 425413 423000) ".hgignore" ".lein-failures" "project.clj" "project.clj~" "src/" "README.md" "target/" ".gitignore" "../" "resources/" "bokiwiki/" "./" "LICENSE" "CHANGELOG.md" ".lein-env" ".lein-repl-history" ".git/" "test/" "doc/")
+
+ ("/home/yoshi/clj/cookpet/src/cookpet/handler/" (22227 50606 773689 174000) "main.clj~" "wiki.clj~" "../" "./" "main.clj" "wiki.clj")
+
+ ("/home/yoshi/clj/cookpet/src/cookpet/page/" (22227 65444 59699 451000) "main.clj~" "wiki.clj~" "../" "./" "main.clj" "wiki.clj" "layout.clj" "layout.clj~")
+
+ ("/home/yoshi/clj/cookpet/resources/public/css/" (22206 57929 468130 988000) "papier/" "../" "style.css" "main.js" "./" "papier-1.3.1.min.css" "normalize/" "normalize.css")
+
+ ("/home/yoshi/clj/cookpet/resources/public/" (22206 56203 5040 148000) "css/" "../" "./")
+
+ ("/home/yoshi/clj/cookpet/resources/" (22206 56187 749033 732000) "../" "public/" "./")
+
+ ("/home/yoshi/clj/cookpet/src/cookpet/" (22227 50919 220456 677000) "handler/" "db/" "page/" "../" "db.clj" "./" "util/" "db.clj~" "core.clj" "core.clj~" "middleware.clj")
+
+ ("/home/yoshi/clj/cookpet/src/cookpet/db/" (22227 50081 516035 9000) "wiki.clj~" "../" "./" "wiki.clj")
+
+ ("/home/yoshi/clj/" (22205 62348 527372 641000) "practice/" "../" "./" "cookpet/")
+
+ ("/home/yoshi/clj/cookpet/src/" (22205 62348 559372 669000) "../" "./" "cookpet/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

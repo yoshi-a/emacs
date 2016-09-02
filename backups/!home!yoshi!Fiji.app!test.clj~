@@ -1,0 +1,5 @@
+(import '(ij ImagePlus)
+        '(ij.process ByteProcessor))
+ 
+(let [imp (ImagePlus. "A new image" (ByteProcessor. 400 400))]
+  (.show imp))

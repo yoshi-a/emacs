@@ -1,0 +1,100 @@
+(ns cookpet.page.question
+  (:require [hiccup.core :as hc]
+            [hiccup.form :as hf]
+            [ring.util.anti-forgery :refer [anti-forgery-field]]
+            [cookpet.page.layout :as layout]))
+
+(defn error-messages [req]
+  (when-let [errors (:errors req)]
+    [:ul
+     (for [[k v] errors
+           msg v]
+       [:li.error-message msg])]))
+
+(defn question-new-page [req]
+  (->> [:section.card
+        [:h2 "問題カードを書く"]
+        (hf/form-to
+         [:post "/question/new"]
+         (anti-forgery-field)
+         (error-messages req)
+         [:input.name {:name :name :placeholder "名前を入力"}]
+         [:input.question {:name :question :placeholder "問題を入力"}]
+         [:input.answer {:name :answer :placeholder "答えを入力"}]
+         [:input.explain {:name :explain :placeholder "解説を入力"}]
+         [:button.bg-blue "追加"])
+        [:a.back {:href "/"} "ホームに戻る"]]
+       (layout/common req)))
+
+(defn question [req question-list]
+  (->> [:section.card
+        (when-let [{:keys [msg]} {:flash req}]
+          [:div.alert.alert-success [:strong msg]])
+        [:h1 "問題カード一覧"]
+        [:li [:a {:href "/question/new"} "問題カードを書く"]]
+        (hf/form-to
+         [:post "/question/search"]
+         (anti-forgery-field)
+         (error-messages req)
+         [:input {:name :keyword :placeholder "名前を入力"}]
+         [:button.bg-blue "フィルタ"])
+        [:ul 
+         (for [{:keys [id name question answer]} question-list]
+           [:li.question [:a.question {:href (str "/question/" id)} (str question "-by " name)]
+            [:button.answer "答え"]
+            [:p.answer answer]])]
+        [:a.back {:href "/"} "ホームに戻る"]]
+      (layout/common req)))
+
+(defn question-show-view [req question]
+  (let [question-id (:id question)]
+    (->> [:section.card
+          (when-let [{:keys [msg]} (:flash req)]
+            [:div.alert.alert-success [:strong msg]])
+          [:h2 (:question question)]
+          [:div.answer 
+           [:p "答え：" (:answer question)]
+           [:p "解説：" (:explain question)]]
+          [:div
+           [:a.wide-link {:href (str "/question/" question-id "/edit")} "修正する"]
+           [:a.wide-link {:href (str "/question/" question-id "/delete")} "削除する"]]
+         [:a.back {:href "/question"} "一覧に戻る"]]
+         (layout/common req))))
+
+(defn show-question [req question]
+  (let [question-id (:id question)]
+    (->> [:section.card
+          (when-let [{:keys [msg]} (:flash req)]
+            [:div.alert.alert-success [:strong msg]])
+          [:h2 (:question question)]
+          [:a.wide-link {:href (str "/question/" question-id "/edit")} "edit"]
+          [:a.wide-link {:href (str "/question/" question-id "/delete")} "delete"]]
+         (layout/common req))))
+
+(defn question-edit-view [req question]
+  (let [question-id (get-in req [:params :question-id])]
+    (->> [:section.card
+          [:h2 "編集"]
+          (hf/form-to
+           [:post (str "/question/" question-id "/edit")]
+           (anti-forgery-field)
+           (error-messages req)
+           [:input.question {:name :question :value (:question question)
+                    :placeholder "問題"}]
+           [:input.answer {:name :answer :value (:answer question)
+                    :placeholder "解答"}]
+           [:input.explain {:name :explain :value (:explain question)
+                    :placeholder "説明"}]
+           [:button.bg.blue "更新"])]
+         (layout/common req))))
+(defn question-delete-view [req question]
+  (let [question-id (get-in req [:params :question-id])]
+    (->> [:section.card
+          [:h2 "削除"]
+          (hf/form-to
+           [:post (str "/question/" question-id "/delete")]
+           (anti-forgery-field)
+           [:p "Are you sure?"]
+           [:p "*" (:question question)]
+           [:button.bg-red "削除"])]
+         (layout/common req))))

@@ -1,0 +1,95 @@
+(ns cookpet.page.wiki
+  (:require [hiccup.core :as hc]
+            [hiccup.form :as hf]
+            [ring.util.anti-forgery :refer [anti-forgery-field]]
+            [cookpet.page.layout :as layout]))
+
+(defn error-messages [req]
+  (when-let [errors (:errors req)]
+    [:ul
+     (for [[k v] errors
+           msg v]
+       [:li.error-message msg])]))
+
+(defn wiki-new-page [req]
+  (->> [:section.card
+        [:h2 "WIKIを書く"]
+        (hf/form-to
+         [:post "/wiki/new"]
+         (anti-forgery-field)
+         (error-messages req)
+         [:input {:name :name :placeholder "名前を入力"}]
+         [:input {:name :question :placeholder "問題を入力"}]
+         [:input {:name :answer :placeholder "答えを入力"}]
+         [:input {:name :explain :placeholder "解説を入力"}]
+         [:button.bg-blue "追加"])]
+       (layout/common req)))
+
+(defn wiki [req wiki-list]
+  (->> [:section.card
+        (when-let [{:keys [msg]} {:flash req}]
+          [:div.alert.alert-success [:strong msg]])
+        [:h1 "wiki 一覧"]
+        [:a {:href "/"} "ホームに戻る"]
+        (hf/form-to
+         [:post "/wiki/search"]
+         (anti-forgery-field)
+         (error-messages req)
+         [:input {:name :keyword :placeholder "名前を入力"}]
+         [:button.bg-blue "フィルタ"])
+        [:ul 
+         (for [{:keys [id name question answer]} wiki-list]
+           [:li [:a.question {:href (str "/wiki/" id)} (str question "-by " name)]
+            [:p.answer answer]])]]
+      (layout/common req)))
+
+(defn wiki-show-view [req wiki]
+  (let [wiki-id (:id wiki)]
+    (->> [:section.card
+          (when-let [{:keys [msg]} (:flash req)]
+            [:div.alert.alert-success [:strong msg]])
+          [:h2 (:question wiki)]
+          [:div.answer 
+           [:p.answer "答え：" (:answer wiki)]
+           [:p.explain "解説：" (:explain wiki)]]
+          [:a.wide-link {:href (str "/wiki/" wiki-id "/edit")} "修正する"]
+          [:a.wide-link {:href (str "/wiki/" wiki-id "/delete")} "削除する"]]
+         (layout/common req))))
+
+(defn show-wiki [req wiki]
+  (let [wiki-id (:id wiki)]
+    (->> [:section.card
+          (when-let [{:keys [msg]} (:flash req)]
+            [:div.alert.alert-success [:strong msg]])
+          [:h2 (:question wiki)]
+          [:a.wide-link {:href (str "/wiki/" wiki-id "/edit")} "edit"]
+          [:a.wide-link {:href (str "/wiki/" wiki-id "/delete")} "delete"]]
+         (layout/common req))))
+
+(defn wiki-edit-view [req wiki]
+  (let [wiki-id (get-in req [:params :wiki-id])]
+    (->> [:section.card
+          [:h2 "編集"]
+          (hf/form-to
+           [:post (str "/wiki/" wiki-id "/edit")]
+           (anti-forgery-field)
+           (error-messages req)
+           [:input {:name :question :value (:question wiki)
+                    :placeholder "問題"}]
+           [:input {:name :answer :value (:answer wiki)
+                    :placeholder "解答"}]
+           [:input {:name :explain :value (:explain wiki)
+                    :placeholder "説明"}]
+           [:button.bg.blue "更新"])]
+         (layout/common req))))
+(defn wiki-delete-view [req wiki]
+  (let [wiki-id (get-in req [:params :wiki-id])]
+    (->> [:section.card
+          [:h2 "削除"]
+          (hf/form-to
+           [:post (str "/wiki/" wiki-id "/delete")]
+           (anti-forgery-field)
+           [:p "Are you sure?"]
+           [:p "*" (:question wiki)]
+           [:button.bg-red "削除"])]
+         (layout/common req))))

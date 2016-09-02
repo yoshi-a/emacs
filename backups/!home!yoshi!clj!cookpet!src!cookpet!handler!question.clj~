@@ -1,0 +1,93 @@
+(ns cookpet.handler.question
+  (:require [compojure.core :refer [defroutes context wrap-routes routes GET POST]]
+            [compojure.route :as route]
+            [cookpet.util.response :as res]
+            [cookpet.page.question :as page]
+            [cookpet.db.question :as question]
+            [cookpet.user :as user]
+            [bouncer.validators :as v]
+            [cookpet.util.validation :as uv]
+            [ring.middleware.keyword-params :as keyword-params] 
+            [ring.middleware.params :as params]
+            [cemerick.friend :as friend]
+            ))
+
+(def question-validator {:question  [[v/required :message "入力してください"]]})
+(def name-validator {:keyword  [[v/required :message "入力してください"]]})
+
+(defn render-question [req]
+  (let [question-list (question/find-question-all)]
+    (-> (page/question req question-list)
+        res/ok
+        res/html)))
+(defn question-new [req]
+  (-> (page/question-new-page req)
+      res/ok
+      res/html))
+(defn question-new-post [{:as req :keys [params]}]
+  (uv/with-fallback #(question-new (assoc req :errors %))
+    (let [params (uv/validate params question-validator)]
+      (if-let [question (first (question/save-question (:name params) (:question params) (:answer params) (:explain params)))]
+        (-> (res/found (str "/question/" (:question-id question)))
+            (assoc :flash {:msg "完了"})
+            res/html)
+        (res/internal-server-error!)))))
+(defn edit-question [{:as req :keys [params]}]
+  (if-let [question (question/find-first-question (Long/parseLong (:question-id params)))]
+    (-> (page/question-edit-view req question)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defn edit-question-post [{:as req :keys [params]}]
+  (uv/with-fallback #(edit-question (assoc req :errors %))
+    (let [params (uv/validate params question-validator)
+          question-id (Long/parseLong (:question-id params))]
+      (if (pos? (first (question/update-question question-id (:question params) (:answer params) (:explain params))))
+        (-> (res/found (str "/question/" question-id))
+            (assoc :flash {:msg "完了"})
+            res/html)
+        (res/internal-server-error!)))))
+(defn delete-question [{:as req :keys [params]}]
+  (if-let [question (question/find-first-question (Long/parseLong (:question-id params)))]
+    (-> (page/question-delete-view req question)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defn delete-question-post [{:as req :keys [params]}]
+  (let [question-id (Long/parseLong (:question-id params))]
+    (if (pos? (first (question/delete-question question-id)))
+      (-> (res/found "/question")
+          (assoc :flash {:msg "完了"})
+          res/html)
+      (res/conflict!))))
+(defn question-search [{:as req :keys [params]}]
+  (uv/with-fallback #(render-question (assoc req :errors %))
+   (let [params (uv/validate params name-validator)]
+      (if-let [question (question/find-question-name (:keyword params))]
+        (-> (page/question req question)
+            res/ok
+            res/html)
+        (res/not-found!)))))
+(defn show-question [{:as req :keys [params]}]
+  (if-let [question (question/find-first-question (Long/parseLong (:question-id params)))]
+    (-> (page/question-show-view req question)
+        res/ok
+        res/html)
+    (res/not-found!)))
+(defroutes question-routes
+   (context "/question" _
+            (wrap-routes
+             (routes
+              (GET "/" _ render-question)
+              (GET "/new" _ question-new)
+              (POST "/new" _ question-new-post)
+              (POST "/search" _ question-search)
+              (context "/:question-id" _
+                         (GET "/" _ show-question)
+                         (GET "/edit" _ edit-question)
+                         (POST "/edit" _ edit-question-post)
+                         (GET "/delete" _ delete-question)
+                         (POST "/delete" _ delete-question-post)))
+            friend/wrap-authorize
+            #{::user/user}
+              )))

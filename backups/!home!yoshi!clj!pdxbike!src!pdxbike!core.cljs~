@@ -1,0 +1,30 @@
+(ns ^:figwheel-always pdxbike.core
+  (:require [reagent.core :as reagent :refer [atom]]))
+
+(enable-console-print!)
+;; define your app data so that it doesn't get over-written on reload
+
+(defonce app-state (atom {:text "Hello world!"
+                          :count 0}))
+(defn increment-count [e]
+  (swap! app-state update-in [:count] inc))
+
+(defn hello-world []
+  [:div
+  [:h1 (:text @app-state)]
+  [:button {:on-click #(swap! app-state assoc :text (str "it is now " (js/Date.)))}
+"Push Me"]])
+(defn my-page []
+  [:div
+   [:h1 (:text @app-state)]
+   [:h2 (str "We've seen " (:count @app-state) " bikes.")]
+   [:button {:on-click increment-count} "There goes a bike"]])
+(reagent/render-component [my-page]
+                          (. js/document (getElementById "app")))
+
+
+(defn on-js-reload []
+  ;; optionally touch your app-state to force rerendering depending on
+  ;; your application
+  ;; (swap! app-state update-in [:__figwheel_counter] inc)
+)

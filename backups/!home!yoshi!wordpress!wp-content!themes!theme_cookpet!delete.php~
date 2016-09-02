@@ -1,0 +1,3 @@
+<?php  $id=get_the_id($post);
+if(isset($_POST=['delete'])){
+ wp_delete_post($id,true);}?>

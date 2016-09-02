@@ -1,0 +1,8 @@
+(ns cookpet.user
+  (:require [cemerick.friend :as friend]
+            (cemerick.friend [workflows :as workflows]
+                             [credentials :as creds])))
+(def users {"bokibu" {:username "bokibu"
+                      :password (creds/hash-bcrypt "bokibokkiboki")
+                      :roles #{::users/user}}})
+

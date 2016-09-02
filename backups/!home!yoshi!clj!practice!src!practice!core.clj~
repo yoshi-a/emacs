@@ -1,0 +1,36 @@
+(ns practice.core)
+
+(import java.util.Calendar
+        java.io.File)
+(gen-class
+ :name practice.core.Myklass
+ :extends java.util.Date
+ :implements [Runnable]
+ :method [[m1 [] String]
+          [m2 [String] long]
+          ^:static [s1 [] String]]
+ :prefix my-klass-
+ :exposes-methods {toString superToString}
+ )
+(defn my-klass-toString [this]
+  (str "[" (.theState this) "]"
+       (.superToString this)))
+(defn my-klass-run [this]
+  (println "sleeping...")
+  (Thread/sleep 1000)
+  (println "good morning"))
+(defn clj-fn
+  ([] (println "empty"))
+  ([{k1 :key}{k2 :key}]
+   (- k1 k2)))
+(def map-arr
+  (into-array Object
+              [{:key 8 :val "hello"}
+               {:key 2 :val "okey"}
+               {:key 1 :val "good"}]))
+(defn length [ls]
+  (let [r (fn [rec i]
+            (if (or (empty? rec) (= i 5))
+              i
+              (recur (rest rec) (inc i))))]
+          (r ls 0)))

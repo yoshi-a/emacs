@@ -1,0 +1,10 @@
+(ns cookpet.page.main
+  (:require [cookpet.page.layout :as layout]))
+
+(defn home [req]
+  (->> [:section.card
+        [:h2 "menu"]
+        [:ul
+         [:li [:a {:href "/question"} "問題一覧"]]
+         ]]
+      (layout/common req)))
